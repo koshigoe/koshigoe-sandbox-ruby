@@ -12,5 +12,5 @@ EOF
 end
 
 get '/image-base64' do
-  JSON.generate(body: Base64.strict_encode64(File.read('image-base64.png')))
+  JSON.generate(body: Base64.strict_encode64(File.read('image-base64.png')), meta: Base64.strict_encode64('ほげ'))
 end
