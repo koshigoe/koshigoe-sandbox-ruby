@@ -14,3 +14,7 @@ end
 get '/image-base64' do
   JSON.generate(body: Base64.strict_encode64(File.read('public/image-base64.png')))
 end
+
+get '/redirect.json' do
+  JSON.generate(location: 'http://koshigoe-sandbox-ruby.herokuapp.com/image-base64.png')
+end
