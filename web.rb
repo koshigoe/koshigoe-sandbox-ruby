@@ -18,3 +18,7 @@ end
 get '/redirect.json' do
   JSON.generate(location: 'http://koshigoe-sandbox-ruby.herokuapp.com/image-base64.png')
 end
+
+get '/brick_ftp_webhook' do
+  request.query_string
+end
