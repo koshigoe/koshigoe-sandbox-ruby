@@ -22,3 +22,7 @@ end
 get '/brick_ftp_webhook' do
   request.query_string
 end
+
+get '/file.csv' do
+  return ''
+end
