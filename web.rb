@@ -23,6 +23,10 @@ get '/brick_ftp_webhook' do
   request.query_string
 end
 
+get '/file.csv' do
+  return ''
+end
+
 get '/redirect' do
   redirect params[:url]
 end
