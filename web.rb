@@ -22,3 +22,7 @@ end
 get '/brick_ftp_webhook' do
   request.query_string
 end
+
+get '/redirect' do
+  redirect params[:url]
+end
