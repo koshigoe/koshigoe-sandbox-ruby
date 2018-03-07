@@ -30,3 +30,7 @@ end
 get '/redirect' do
   redirect params[:url]
 end
+
+get '/500' do
+  [500, {}, 'ERROR']
+end
