@@ -13,6 +13,10 @@ get '/dump-http-request.png' do
   File.read('public/test.png')
 end
 
+get '/' do
+  [200, {}, 'OK.']
+end
+
 get '/redirect-from-https-to-http.csv' do
   redirect request.url.gsub(/\Ahttps/, 'http') if request.secure?
   return <<EOF
