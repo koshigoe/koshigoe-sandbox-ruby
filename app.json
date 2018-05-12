@@ -1,6 +1,6 @@
 {
   "name": "Sandbox",
-  "description": "Sandbox.",
+  "description": "Sandbox for practice in Heroku.",
   "keywords": [],
   "website": "https://github.com/koshigoe/koshigoe-sandbox-ruby",
   "repository": "https://github.com/koshigoe/koshigoe-sandbox-ruby",
@@ -9,8 +9,13 @@
     "postdeploy": "echo $TEST"
   },
   "env": {
+    "DUMMY": {
+      "description": "dummy",
+      "value": "dummy"
+    },
     "TEST": {
       "description": "inherit from master",
+      "required": true
     }
   }
 }
