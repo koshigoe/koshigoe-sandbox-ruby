@@ -40,3 +40,10 @@ get '/http-error' do
   status = 500 unless (500...600).cover?(status)
   [status, {}, 'ERROR']
 end
+
+HTTP_STATUS = [500, 500, 200]
+get '/500-500-200' do
+  status = HTTP_STATUS.first
+  HTTP_STATUS.rotate!
+  [status, {}, status.to_s]
+end
