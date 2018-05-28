@@ -34,3 +34,9 @@ end
 get '/500' do
   [500, {}, 'ERROR']
 end
+
+get '/http-error' do
+  status = params[:code].to_i
+  status = 500 unless (500...600).cover?(status)
+  [status, {}, 'ERROR']
+end
