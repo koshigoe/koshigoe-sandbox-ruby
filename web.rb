@@ -52,10 +52,12 @@ COUNTER = Hash.new(0)
 URLS = [
   'http://reference.dfplus.io/sample/sample_masterdata.csv', # 取込設定
   'http://reference.dfplus.io/sample/sample_masterdata.csv', # 取込1回目
-  'https://s3-ap-northeast-1.amazonaws.com/df-monkey-preview/testdata/sample_masterdata.conflict.csv', # 取込2回目
+  'http://s3-ap-northeast-1.amazonaws.com/df-monkey-preview/testdata/sample_masterdata.conflict.csv', # 取込2回目
+  'http://s3-ap-northeast-1.amazonaws.com/df-monkey-preview/testdata/sample_masterdata.conflict.csv', # 構成変更
 ]
 get '/cycle' do
-  url = URLS[COUNTER[params[:k]] % URLS.size]
+  i = COUNTER[params[:k]] % URLS.size
+  url = URLS[i]
   COUNTER[params[:k]] += 1
 
   redirect url
