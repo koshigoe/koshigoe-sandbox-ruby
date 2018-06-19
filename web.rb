@@ -53,7 +53,8 @@ URLS = [
   'http://reference.dfplus.io/sample/sample_masterdata.csv', # 取込設定
   'http://reference.dfplus.io/sample/sample_masterdata.csv', # 取込1回目
   'http://s3-ap-northeast-1.amazonaws.com/df-monkey-preview/testdata/sample_masterdata.conflict.csv', # 取込2回目
-  'http://s3-ap-northeast-1.amazonaws.com/df-monkey-preview/testdata/sample_masterdata.conflict.csv', # 構成変更
+  'http://s3-ap-northeast-1.amazonaws.com/df-monkey-preview/testdata/sample_masterdata.conflict.csv', # 構成変更開始
+  'http://s3-ap-northeast-1.amazonaws.com/df-monkey-preview/testdata/sample_masterdata.conflict.csv', # 構成変更完了
 ]
 get '/cycle' do
   i = COUNTER[params[:k]] % URLS.size
