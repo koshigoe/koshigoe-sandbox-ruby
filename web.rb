@@ -67,7 +67,7 @@ SENARIO = {
 }
 
 get '/cycle' do
-  urls = SENARIO[params.fetch(:s, 'a')]
+  urls = SENARIO[params[:s] || 'a']
   id = "#{params[:s]}.#{params[:k]}"
   index = COUNTER[id] % urls.size
   COUNTER[id] += 1
