@@ -70,7 +70,13 @@ get '/cycle' do
   urls = SENARIO[params[:s] || 'a']
   id = "#{params[:s]}.#{params[:k]}"
   index = COUNTER[id] % urls.size
-  COUNTER[id] += 1
 
-  redirect urls[index]
+  if params[:st]
+    list = Array.new(urls.size, '  ').zip(urls)
+    list[index][0] = '* '
+    [200, {}, list.map(&:join).join("\n")]
+  else
+    COUNTER[id] += 1
+    redirect urls[index]
+  end
 end
