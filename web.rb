@@ -49,17 +49,28 @@ get '/500-500-200' do
 end
 
 COUNTER = Hash.new(0)
-URLS = [
-  'http://reference.dfplus.io/sample/sample_masterdata.csv', # 取込設定
-  'http://reference.dfplus.io/sample/sample_masterdata.csv', # 取込1回目
-  'http://s3-ap-northeast-1.amazonaws.com/df-monkey-preview/testdata/sample_masterdata.conflict.csv', # 取込2回目
-  'http://s3-ap-northeast-1.amazonaws.com/df-monkey-preview/testdata/sample_masterdata.conflict.csv', # 構成変更開始
-  'http://s3-ap-northeast-1.amazonaws.com/df-monkey-preview/testdata/sample_masterdata.conflict.csv', # 構成変更完了
-]
-get '/cycle' do
-  i = COUNTER[params[:k]] % URLS.size
-  url = URLS[i]
-  COUNTER[params[:k]] += 1
+SENARIO = {
+  'a' => [
+    'http://reference.dfplus.io/sample/sample_masterdata.csv', # 取込設定
+    'http://reference.dfplus.io/sample/sample_masterdata.csv', # 取込1回目
+    'http://s3-ap-northeast-1.amazonaws.com/df-monkey-preview/testdata/sample_masterdata.conflict.csv', # 取込2回目
+    'http://s3-ap-northeast-1.amazonaws.com/df-monkey-preview/testdata/sample_masterdata.conflict.csv', # 構成変更開始
+    'http://s3-ap-northeast-1.amazonaws.com/df-monkey-preview/testdata/sample_masterdata.conflict.csv', # 構成変更完了
+  ],
+  'b' => [
+    'http://reference.dfplus.io/sample/sample_masterdata.csv', # 取込設定
+    'http://reference.dfplus.io/sample/sample_masterdata.csv', # 取込1回目
+    'http://s3-ap-northeast-1.amazonaws.com/df-monkey-preview/testdata/sample_masterdata.conflict.csv', # 取込2回目
+    'http://s3-ap-northeast-1.amazonaws.com/df-monkey-preview/testdata/sample_masterdata.conflict.csv', # 構成変更開始
+    'http://reference.dfplus.io/sample/sample_masterdata.csv', # 構成変更失敗
+  ]
+}
 
-  redirect url
+get '/cycle' do
+  urls = SENARIO[params.fetch(:s, 'a')]
+  id = "#{params[:s]}.#{params[:k]}"
+  index = COUNTER[id] % urls.size
+  COUNTER[id] += 1
+
+  redirect urls[index]
 end
