@@ -63,7 +63,14 @@ SENARIO = {
     'http://s3-ap-northeast-1.amazonaws.com/df-monkey-preview/testdata/sample_masterdata.conflict.csv', # 取込2回目
     'http://s3-ap-northeast-1.amazonaws.com/df-monkey-preview/testdata/sample_masterdata.conflict.csv', # 構成変更開始
     'http://reference.dfplus.io/sample/sample_masterdata.csv', # 構成変更失敗
-  ]
+  ],
+  'c' => [
+    'http://reference.dfplus.io/sample/sample_masterdata.csv', # 取込設定
+    'http://reference.dfplus.io/sample/sample_masterdata.csv', # 取込1回目
+    'http://s3-ap-northeast-1.amazonaws.com/df-monkey-preview/testdata/sample_masterdata.conflict.csv', # 取込2回目
+    'http://s3-ap-northeast-1.amazonaws.com/df-monkey-preview/testdata/sample_masterdata.conflict.csv', # 構成変更開始
+    'http://s3-ap-northeast-1.amazonaws.com/df-monkey-preview/testdata/403', # 構成変更失敗
+  ],
 }
 
 get '/cycle' do
