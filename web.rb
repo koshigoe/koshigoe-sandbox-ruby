@@ -81,7 +81,7 @@ get '/cycle' do
   if params[:st]
     list = Array.new(urls.size, '  ').zip(urls)
     list[index][0] = '* '
-    [200, {}, list.map(&:join).join("\n")]
+    [200, { 'Content-Type' => 'text/plain' }, list.map(&:join).join("\n")]
   else
     COUNTER[id] += 1
     redirect urls[index]
