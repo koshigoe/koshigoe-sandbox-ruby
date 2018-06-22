@@ -71,6 +71,11 @@ SENARIO = {
     'http://s3-ap-northeast-1.amazonaws.com/df-monkey-preview/testdata/sample_masterdata.conflict.csv', # 構成変更開始
     'http://s3-ap-northeast-1.amazonaws.com/df-monkey-preview/testdata/403', # 構成変更失敗
   ],
+  'd' => [
+    'http://reference.dfplus.io/sample/sample_masterdata.csv', # 取込設定
+    'http://s3-ap-northeast-1.amazonaws.com/df-monkey-preview/testdata/sample_masterdata.conflict.csv', # 取込2回目(構成変更モーダル表示)
+    'http://koshigoe-sandbox-ruby.herokuapp.com/sleep?t=60', # 構成変更待ち
+  ]
 }
 
 get '/cycle' do
@@ -86,4 +91,12 @@ get '/cycle' do
     COUNTER[id] += 1
     redirect urls[index]
   end
+end
+
+get '/sleep' do
+  t = params[:t].to_f
+
+  sleep t if t > 0
+
+  [200, {}, "sleep #{t} sec."]
 end
