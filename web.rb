@@ -106,3 +106,7 @@ get '/sleep' do
 
   [200, {}, "sleep #{t} sec."]
 end
+
+get '/blank-columns.csv' do
+  [200, {}, Array.new(params[:n].to_i).join(',')]
+end
