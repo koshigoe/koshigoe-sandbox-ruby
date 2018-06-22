@@ -73,9 +73,15 @@ SENARIO = {
   ],
   'd' => [
     'http://reference.dfplus.io/sample/sample_masterdata.csv', # 取込設定
-    'http://s3-ap-northeast-1.amazonaws.com/df-monkey-preview/testdata/sample_masterdata.conflict.csv', # 取込2回目(構成変更モーダル表示)
+    'http://s3-ap-northeast-1.amazonaws.com/df-monkey-preview/testdata/sample_masterdata.conflict.csv', # 取込設定2回目(構成変更モーダル表示)
     'http://koshigoe-sandbox-ruby.herokuapp.com/sleep?t=60', # 構成変更待ち
-  ]
+  ],
+  'e' => [
+    'http://reference.dfplus.io/sample/sample_masterdata.csv', # 取込設定
+    'http://s3-ap-northeast-1.amazonaws.com/df-monkey-preview/testdata/sample_masterdata.conflict.csv', # 取込1回目(構成変更検知)
+    'http://s3-ap-northeast-1.amazonaws.com/df-monkey-preview/testdata/sample_masterdata.conflict.csv', # 構成変更モーダル表示
+    'http://koshigoe-sandbox-ruby.herokuapp.com/sleep?t=60', # 構成変更待ち
+  ],
 }
 
 get '/cycle' do
