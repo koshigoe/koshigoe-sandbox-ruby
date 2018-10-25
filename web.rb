@@ -2,6 +2,11 @@ require 'sinatra'
 require 'base64'
 require 'json'
 
+get '/dump-http-request' do
+  p request.env
+  return ''
+end
+
 get '/redirect-from-https-to-http.csv' do
   redirect request.url.gsub(/\Ahttps/, 'http') if request.secure?
   return <<EOF
