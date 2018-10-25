@@ -7,6 +7,12 @@ get '/dump-http-request' do
   return ''
 end
 
+get '/dump-http-request.png' do
+  p request.env
+  content_type 'image/png'
+  File.read('public/test.png')
+end
+
 get '/redirect-from-https-to-http.csv' do
   redirect request.url.gsub(/\Ahttps/, 'http') if request.secure?
   return <<EOF
