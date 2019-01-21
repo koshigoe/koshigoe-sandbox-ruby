@@ -125,3 +125,16 @@ end
 get '/blank-columns.csv' do
   [200, {}, Array.new(params[:n].to_i).join(',')]
 end
+
+get '/cycle-success-error' do
+  error = params[:e].to_i
+  counter_id = "cycle-success-error-#{error}"
+  index = COUNTER[counter_id] % 2
+  COUNTER[counter_id] += 1
+
+  if index == 0
+    [200, {}, "a,b,c\n1,2,3"]
+  else
+    [error, {}, '']
+  end
+end
