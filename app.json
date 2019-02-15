@@ -10,7 +10,7 @@
   },
   "env": {
     "TEST": {
-      "description": "inherit from master",
+      "description": "inherit from master"
     }
   }
 }
