@@ -2,6 +2,31 @@ require 'sinatra'
 require 'base64'
 require 'json'
 
+helpers do
+  def protect!
+    return if authorized?
+
+    response['WWW-Authenticate'] = %(Basic realm="Restricted Area")
+    throw(:halt, [401, "Not authorized\n"])
+  end
+
+  def authorized?
+    @auth ||=  Rack::Auth::Basic::Request.new(request.env)
+    username = '+@user'
+    password = '+@pass'
+    @auth.provided? && @auth.basic? && @auth.credentials && @auth.credentials == [username, password]
+  end
+end
+
+get '/basic-auth' do
+  protect!
+
+  <<~EOF
+    a,b,c
+    1,2,3
+  EOF
+end
+
 get '/dump-http-request' do
   p request.env
   return ''
