@@ -177,7 +177,7 @@ post '/aws-transfer-auth' do
       'HomeDirectoryDetails' => [
         'Entry' => '/',
         'Target' => 'ff-sandbox-koshigoe',
-      ],
+      ].to_json,
     }.to_json
   ]
 end
