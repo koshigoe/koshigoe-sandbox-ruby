@@ -163,3 +163,21 @@ get '/cycle-success-error' do
     [error, {}, '']
   end
 end
+
+post '/aws-transfer-auth' do
+  [
+    200,
+    {
+      'Content-Type': 'application/json',
+    },
+    {
+      'Role' => 'arn:aws:iam::166616333867:role/koshigoe-transfer-sandbox-RoleForTransferUser-10KZZBYHI2ZYS',
+      'Policy' => '',
+      'HomeDirectoryType' => 'LOGICAL',
+      'HomeDirectoryDetails' => [
+        'Entry' => '/',
+        'Target' => 'ff-sandbox-koshigoe',
+      ],
+    }.to_json
+  ]
+end
