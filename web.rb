@@ -176,7 +176,7 @@ post '/aws-transfer-auth' do
       'HomeDirectoryType' => 'LOGICAL',
       'HomeDirectoryDetails' => [
         'Entry' => '/',
-        'Target' => 'ff-sandbox-koshigoe',
+        'Target' => '/ff-sandbox-koshigoe/test',
       ].to_json,
     }.to_json
   ]
