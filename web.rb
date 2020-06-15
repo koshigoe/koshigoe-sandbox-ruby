@@ -172,7 +172,7 @@ post '/aws-transfer-auth' do
     },
     {
       'Role' => 'arn:aws:iam::166616333867:role/koshigoe-transfer-sandbox-RoleForTransferUser-10KZZBYHI2ZYS',
-      'Policy' => '',
+      # 'Policy' => '',
       'HomeDirectoryType' => 'LOGICAL',
       'HomeDirectoryDetails' => [
         'Entry' => '/',
