@@ -168,7 +168,7 @@ post '/aws-transfer-auth' do
   [
     200,
     {
-      'Content-Type': 'application/json',
+      'Content-Type' => 'application/json',
     },
     {
       'Role' => 'arn:aws:iam::166616333867:role/koshigoe-transfer-sandbox-RoleForTransferUser-10KZZBYHI2ZYS',
