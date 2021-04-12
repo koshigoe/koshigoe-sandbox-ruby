@@ -32,6 +32,11 @@ get '/dump-http-request' do
   return ''
 end
 
+post '/dump-http-post-request' do
+  p request.env
+  return ''
+end
+
 get '/dump-http-request.png' do
   p request.env
   content_type 'image/png'
