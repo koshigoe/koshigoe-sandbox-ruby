@@ -34,6 +34,10 @@ end
 
 post '/dump-http-post-request' do
   p request.env
+
+  request.body.rewind
+  p request.body.read
+
   return ''
 end
 
