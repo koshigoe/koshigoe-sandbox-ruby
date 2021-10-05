@@ -193,12 +193,13 @@ end
 
 get '/rss' do
   n = (params[:n] || 10).to_i
-  pub_date = Time.now.getgm.strftime('%a, %d %b %Y %H:%M:%S GMT')
+  pub_date = nil # Time.now.getgm.strftime('%a, %d %b %Y %H:%M:%S GMT')
+  oa_last_pub_date = Time.now.getgm.strftime('%a, %d %b %Y %H:%M:%S GMT')
 
   content_type 'application/rss+xml'
   header = <<~XML
     <?xml version="1.0" encoding="utf-8"?>
-    <rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:media="http://search.yahoo.com/mrss/" xmlns:snf="http://www.smartnews.be/snf">
+    <rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:media="http://search.yahoo.com/mrss/" xmlns:snf="http://www.smartnews.be/snf" xmlns:oa="http://news.line.me/rss/1.0/oa">
       <channel>
         <title>スマートタイムス</title>
         <link>http://times.smartnews.co.jp/</link>
@@ -219,6 +220,7 @@ get '/rss' do
           渋谷駅桜丘口地区再開発準備組合と東急不動産株式会社は、2014年6月16日、渋谷区の市街地再開発等の都市開発計画が東京都により決定されたと発表した。
             ]]></description>
             <pubDate>#{pub_date}</pubDate>
+            <oa:lastPubDate>#{oa_last_pub_date}</oa:lastPubDate>
             <content:encoded><![CDATA[
           <p>渋谷駅桜丘口地区再開発準備組合と東急不動産株式会社は、2014年6月16日、渋谷区の市街地再開発等の都市開発計画が東京都により決定されたと発表した。</p>
           <p>この都市計画は、2013年12月19日より東京都知事に対して提案されていたもので、渋谷駅中心地区の都市基盤整備を完成させる重要なプロジェクトとなっている。</p>
